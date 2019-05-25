@@ -1,0 +1,40 @@
+    /*********************HORIZONTAL********************/
+    .menu_horizontal {
+        color: #402E2A;
+        background-color: #D5B0AC;
+        font-weight: bold;
+        padding: 5px 0px;
+        text-align: center;
+    }
+
+    .menu_horizontal span {
+        width: 100px;
+        height: 30px;
+        padding: 5px 50px;
+       
+    }
+
+    .menu_horizontal span:hover {
+        color: #ffffff;
+        background-color: #9CD08F;
+    }
+
+
+
+    /**********************VERTICAL**********************/
+    .menu_vertical {
+        display: inline-block;
+        color: #402E2A;
+        background-color: #D5B0AC;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .menu_vertical span {
+        display: block;
+        width: 100px;
+        height: 20px;
+        text-align: center;
+        padding: 10px 50px;
+        border-bottom: 1px solid #ffffff;
+    }
