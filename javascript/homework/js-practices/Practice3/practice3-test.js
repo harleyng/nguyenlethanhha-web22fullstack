@@ -51,7 +51,7 @@ describe("Practice 3: ", function () {
 
         it(`generated output data must equal to index of target`, function () {
           result.forEach(item => {
-            expect(item.input.indexOf(item.target)).toEqual(item.output);
+            expect(item.input.indexOf(item.target)).toEqual(item.ouput);
           });
         });
       });
