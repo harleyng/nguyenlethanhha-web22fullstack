@@ -1,46 +1,40 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const app = express();
+
+const ViewRouter = require('./routers/view');
+const ApiRouter = require('./routers/api');
+
+mongoose.connect(
+	'mongodb://localhost/quyetde',
+	{ useNewUrlParser: true },
+	(err) => {
+		if(err) console.log(err)
+		else console.log("DB connect success!!");
+	});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/home.html');
-});
-
-app.get('/ask', (req, res) => {
-    res.sendFile(__dirname + '/views/ask.html');
-});
-
-
-// app.get('/info', (req, res) => {
-//     res.sendFile(__dirname + '/views/home.html');
+// app.use((req, res, next) => {
+// 	console.log("Hello Middleware");
+// 	// res.send('Stop!');
+// 	// req.user = "hung";
+// 	next();
 // })
 
-app.post('/addquestion', (req, res) => {
-    const fileData = fs.readFileSync('question.txt', { encoding: 'utf-8' });
-    let questionList = [];
-    if(fileData) {
-        questionList = JSON.parse(fileData);
-    }
+app.use('/', ViewRouter);
+app.use('/api', ApiRouter);
 
-    const question = {
-        id: questionList.length,
-        yes: 0,
-        no: 0,
-        content: req.body.question
-    }
-    questionList.push(question);
-    fs.writeFileSync('question.txt', JSON.stringify(questionList));
-    res.redirect('/');
-});
+// app.get('/', (req, res) => {
+// 	res.sendFile(__dirname + '/views/info.html');
+// });
 
-app.use('/public',express.static('public'));
+app.use('/public', express.static('public'));
 
 const port = 6969;
 app.listen(port, (err) => {
-    if(err) console.log(err) 
-    else console.log("Server start successfully");
-})
+	if(err) console.log(err)
+	else console.log("Server start success");
+});

@@ -7,14 +7,13 @@
     <title>Hỏi nhanh</title>
 </head>
 <body>
-    <h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
-
-    <form action="/addquestion" method="POST">
-    <textarea name="question" id="" cols="150" rows="10" maxlength="200"></textarea><br>
-    <span>Còn <span id="remain">200</span>/200 ký tự</span><br>
-    <button type="submit">Submit</button>
+    <h1>Hỏi một câu hỏi có/không</h1>
+    <form action="/api/addquestion" method="POST">
+        <textarea maxlength="200" name="question" id="" cols="30" rows="10"></textarea>
+        <span>Còn <span id='remain'>200</span>/200 ký tự</span>
+        <button type="submit">Submit</button>
     </form>
 
-    <script src="../public/ask.js"></script>
+    <script src="/public/ask.js"></script>
 </body>
 </html>
